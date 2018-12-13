@@ -21,7 +21,7 @@ export default class Navigate extends React.Component {
 	}
 	render() {
 		return (
-			<Navbar className="mb-5" color="light" light expand="md">
+			<Navbar className="mb-4" color="light" light expand="md">
 				<Container>
 					<NavbarBrand className="mr-5">reactstrap</NavbarBrand>
 					<NavbarToggler onClick={this.toggle} />

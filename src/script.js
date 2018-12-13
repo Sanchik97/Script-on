@@ -5,22 +5,29 @@ export default [
 		questions: [
 			{
 				id: '1',
-				nameOfQuestion: 'Здрасти'
+				nameOfQuestion: 'Добрый день! Вам удобно говорить?',
 			},
 			{
 				id: '2',
-				nameOfQuestion: 'К черту всё, я устал!'
+				answerId:'1',
+				nameOfQuestion: 'Я звоню из компании {Название компании}'
 			},
 			{
 				id: '3',
-				nameOfQuestion: 'Можно предложить вам наши услуги?'
+				answerId:'2',
+				nameOfQuestion: 'Мы предлогаем услуги в сфере {Сфера услуг компании}! Вы заинтересованы?'
 			},
 			{
 				id: '4',
-				nameOfQuestion: 'Вы заинтересованы?'
+				answerId: '2',
+				nameOfQuestion: 'Мы звоним вам из компании {Название компании}, когда вам будет удобно с нами поговорить?'
 			},
 			{
 				id: '5',
+				nameOfQuestion: 'Вы заинтересованы?'
+			},
+			{
+				id: '6',
 				nameOfQuestion: 'Могу я вам перезвонить попозже?'
 			}
 		],
@@ -28,17 +35,32 @@ export default [
 			{
 				id: '1',
 				questionId: '1',
-				nameOfAnswer: '123'
+				nameOfAnswer: 'Да'
 			},
 			{
 				id: '2',
 				questionId: '1',
-				nameOfAnswer: 'Да'
+				nameOfAnswer: 'Нет'
 			},
 			{
 				id: '3',
 				questionId: '2',
-				nameOfAnswer: '321'
+				nameOfAnswer: 'Мне удобно говорить'
+			},
+			{
+				id: '4',
+				questionId: '2',
+				nameOfAnswer: 'Мне не удобно разговаривать'
+			},
+			{
+				id: '5',
+				questionId: '2',
+				nameOfAnswer: 'По какому вопросу вы обращаетесь?'
+			},
+			{
+				id: '6',
+				questionId: '6',
+				nameOfAnswer: 'Да'
 			}
 		]
 	},
@@ -62,7 +84,7 @@ export default [
 				nameOfAnswer: 'Нет'
 			},
 			{
-				id: 2,
+				id: '2',
 				questionId: '1',
 				nameOfAnswer: 'Да'
 			},

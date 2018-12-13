@@ -5,7 +5,7 @@ import { questionId } from '../../redux/actions/script'
 import { Link } from 'react-router-dom'
 
 class MapBar extends React.Component {
-	componentWillUnmount(){
+	componentWillUnmount() {
 		this.props.questionId('1')
 	}
 	renderQuestions() {
@@ -14,7 +14,9 @@ class MapBar extends React.Component {
 		const renderQuestions = script.questions.map((item, index) => {
 			return (
 				<li key={index} className="mt-1 mb-1">
-					<Link to={{}} onClick={() => this.props.questionId(item.id)}>{item.nameOfQuestion}</Link>
+					<Link to={{}} onClick={() => this.props.questionId(item.id)}>
+						{item.nameOfQuestion}
+					</Link>
 				</li>
 			)
 		})
@@ -26,7 +28,7 @@ class MapBar extends React.Component {
 
 		return (
 			<div className="card">
-				<h2 className="h3 mt-5 mb-4 text-center">Карта вопросов</h2>
+				<h2 className="h4 mt-4 mb-3 text-center">Карта вопросов</h2>
 				<hr />
 				{script && this.renderQuestions()}
 			</div>
