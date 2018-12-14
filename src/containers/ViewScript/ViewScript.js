@@ -1,8 +1,12 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Button } from 'reactstrap'
 import { connect } from 'react-redux'
 import { getScriptById } from '../../selectors/'
-import { fetchScriptById, questionId } from '../../redux/actions/script'
+import {
+	fetchScriptById,
+	questionId,
+	answerId
+} from '../../redux/actions/script'
 import { Link } from 'react-router-dom'
 import MapBar from '../MapBar/MapBar'
 
@@ -12,16 +16,17 @@ class ViewScript extends React.Component {
 	}
 
 	renderQuestions() {
-		const { script, quest } = this.props
+		const { script, answer } = this.props
 		const renderQuestions = script.questions.map((item, index) => {
 			return (
 				<React.Fragment key={index}>
-					{item.id === quest.questionId ? (
+					{item.answerId === answer.answerId ? (
 						<React.Fragment>
 							<h2 className="h4">
 								<i className="fas fa-headset mr-3 mb-3" />
 								{item.nameOfQuestion}
 							</h2>
+							<p>{item.tips}</p>
 							<ul>{this.renderAnswers()}</ul>
 						</React.Fragment>
 					) : null}
@@ -41,7 +46,10 @@ class ViewScript extends React.Component {
 						<li key={index} className="mt-1 mb-1">
 							<Link
 								to={{}}
-								onClick={() => this.props.questionId(String(Number(quest.questionId) + Number(1)))}
+								onClick={() => {
+									this.props.answerId(item.id)
+									this.props.questionId(item.id)
+								}}
 							>
 								{item.nameOfAnswer}
 							</Link>
@@ -63,13 +71,28 @@ class ViewScript extends React.Component {
 			</div>
 		)
 	}
-
 	render() {
-		const { script } = this.props
+		const { script, quest } = this.props
 		return (
 			<Container>
 				<Row>
-					<Col xs="8">{script && this.renderScript()}</Col>
+					<Col xs="8">
+						{script && this.renderScript()}
+						<div>
+							{quest.questionId > 1 ? (
+								<Link
+									to={{}}
+									className="ml-5 mt-3"
+									onClick={() => {
+										this.props.answerId('0')
+										this.props.questionId('1')
+									}}
+								>
+									Вернуться к началу разговора
+								</Link>
+							) : null}
+						</div>
+					</Col>
 					<Col xs="4">
 						<MapBar />
 					</Col>
@@ -82,14 +105,16 @@ class ViewScript extends React.Component {
 function mapStateToProps(state) {
 	return {
 		script: getScriptById(state, state.scriptPage.id),
-		quest: state.questionMap
+		quest: state.questionMap,
+		answer: state.answerMap
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
 		fetchScriptById: id => dispatch(fetchScriptById(id)),
-		questionId: id => dispatch(questionId(id))
+		questionId: id => dispatch(questionId(id)),
+		answerId: id => dispatch(answerId(id))
 	}
 }
 

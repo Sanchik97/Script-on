@@ -5,8 +5,10 @@ import {
 	FETCH_SCRIPT_BY_ID_START,
 	FETCH_SCRIPT_BY_ID_FAILURE,
 	FETCH_SCRIPT_BY_ID_SUCCESS,
-	EDIT_QUESTION_ID
+	EDIT_QUESTION_ID,
+	ANSWER_ID
 } from './actionTypes'
+
 import { fetchScriptsApi, fetchScriptByIdApi } from '../../api/'
 
 export const fetchScripts = () => async dispatch => {
@@ -44,9 +46,16 @@ export const fetchScriptById = id => async dispatch => {
 	}
 }
 
-export const questionId = (id) => dispatch =>{
+export const questionId = id => dispatch => {
 	dispatch({
-		type:EDIT_QUESTION_ID,
+		type: EDIT_QUESTION_ID,
+		payload: id
+	})
+}
+
+export const answerId = id => dispatch => {
+	dispatch({
+		type: ANSWER_ID,
 		payload: id
 	})
 }

@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getScriptById } from '../../selectors/'
-import { questionId } from '../../redux/actions/script'
+import { answerId, questionId } from '../../redux/actions/script'
 import { Link } from 'react-router-dom'
 
 class MapBar extends React.Component {
 	componentWillUnmount() {
+		this.props.answerId('0')
 		this.props.questionId('1')
 	}
 	renderQuestions() {
@@ -14,7 +15,14 @@ class MapBar extends React.Component {
 		const renderQuestions = script.questions.map((item, index) => {
 			return (
 				<li key={index} className="mt-1 mb-1">
-					<Link to={{}} onClick={() => this.props.questionId(item.id)}>
+					<Link
+						className="text-success"
+						to={{}}
+						onClick={() => {
+							this.props.answerId(String(Number(item.id - 1)))
+							this.props.questionId(item.id)
+						}}
+					>
 						{item.nameOfQuestion}
 					</Link>
 				</li>
@@ -43,6 +51,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
 	return {
+		answerId: id => dispatch(answerId(id)),
 		questionId: id => dispatch(questionId(id))
 	}
 }
