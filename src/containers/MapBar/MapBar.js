@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 
 class MapBar extends React.Component {
 	componentWillUnmount() {
-		this.props.answerId('0')
-		this.props.questionId('1')
 	}
 	renderQuestions() {
 		const { script } = this.props
@@ -19,7 +17,7 @@ class MapBar extends React.Component {
 						className="text-success"
 						to={{}}
 						onClick={() => {
-							this.props.answerId(String(Number(item.id - 1)))
+							this.props.answerId(item.id)
 							this.props.questionId(item.id)
 						}}
 					>

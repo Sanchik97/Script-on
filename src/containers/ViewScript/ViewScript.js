@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Button } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 import { getScriptById } from '../../selectors/'
 import {
@@ -47,8 +47,9 @@ class ViewScript extends React.Component {
 							<Link
 								to={{}}
 								onClick={() => {
-									this.props.answerId(item.id)
-									this.props.questionId(item.id)
+									console.log(item.questionId)
+									this.props.answerId(String(Number(item.id)))
+									this.props.questionId(String(Number(item.id)))
 								}}
 							>
 								{item.nameOfAnswer}
@@ -84,7 +85,7 @@ class ViewScript extends React.Component {
 									to={{}}
 									className="ml-5 mt-3"
 									onClick={() => {
-										this.props.answerId('0')
+										this.props.answerId('1')
 										this.props.questionId('1')
 									}}
 								>
