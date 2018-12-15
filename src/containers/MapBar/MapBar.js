@@ -9,12 +9,12 @@ class MapBar extends React.Component {
 		this.props.answerId('0')
 		this.props.questionId('0')
 	}
+	
 	renderQuestions() {
 		const { script } = this.props
-
-		const renderQuestions = script.questions.map((item, index) => {
+		const renderQuestions = script.questions.map(item => {
 			return (
-				<li key={index} className="mt-1 mb-1">
+				<li key={item.id} className="mt-1 mb-1">
 					<Link
 						className="text-success"
 						to={{}}
@@ -36,7 +36,7 @@ class MapBar extends React.Component {
 
 		return (
 			<div className="card">
-				<h2 className="h4 mt-4 mb-3 text-center">Карта вопросов</h2>
+				<h2 className="h4 mt-4 mb-3 text-center">Карта разговора</h2>
 				<hr />
 				{script && this.renderQuestions()}
 			</div>
@@ -49,6 +49,7 @@ function mapStateToProps(state) {
 		script: getScriptById(state, state.scriptPage.id)
 	}
 }
+
 function mapDispatchToProps(dispatch) {
 	return {
 		answerId: id => dispatch(answerId(id)),

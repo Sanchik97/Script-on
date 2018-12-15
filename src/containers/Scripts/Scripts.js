@@ -13,7 +13,7 @@ class Scripts extends React.Component {
 
 	renderScript(script, index) {
 		return (
-			<tr key={index}>
+			<tr key={script.id}>
 				<td>{index + 1}</td>
 				<td>
 					<NavLink
@@ -56,7 +56,7 @@ class Scripts extends React.Component {
 		return (
 			<div className="Scripts-wrapper">
 				<Container>
-					<Table bordered hover >
+					<Table bordered hover>
 						<thead>
 							<tr>
 								<th>#</th>

@@ -17,21 +17,21 @@ class ViewScript extends React.Component {
 
 	renderQuestions() {
 		const { script, answer } = this.props
-		const renderQuestions = script.questions.map((item, index) => {
+		const renderQuestions = script.questions.map(item => {
 			return (
-				<React.Fragment key={index}>
+				<React.Fragment key={item.id}>
 					{item.answerId === answer.answerId ? (
 						<React.Fragment>
 							<h2 className="h4">
 								{item.answerId > 0 ? (
-									<i class="fas fa-user-alt mr-3 mb-3" />
+									<i className="fas fa-user-alt mr-3 mb-3" />
 								) : (
-									<i className="fas fa-headset mr-3 mb-3" />
+									<i className="fas fa-comments mr-3 mb-3" />
 								)}
 
 								{item.nameOfQuestion}
 							</h2>
-							<p>{item.tips}</p>
+							<p><i className="fas fa-headset mr-2"></i>{item.tips}</p>
 							<ul>{this.renderAnswers()}</ul>
 						</React.Fragment>
 					) : null}
@@ -44,11 +44,11 @@ class ViewScript extends React.Component {
 
 	renderAnswers() {
 		const { script, quest } = this.props
-		const renderAnswers = script.answers.map((item, index) => {
+		const renderAnswers = script.answers.map(item => {
 			return (
-				<React.Fragment key={index}>
+				<React.Fragment key={item.id}>
 					{item.questionId === quest.questionId ? (
-						<li key={index} className="mt-1 mb-1">
+						<li className="mt-1 mb-1">
 							<Link
 								to={{}}
 								onClick={() => {
