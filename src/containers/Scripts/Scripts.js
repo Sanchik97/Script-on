@@ -1,8 +1,8 @@
 import React from 'react'
 import './Scripts.scss'
 import { connect } from 'react-redux'
-import {fetchScripts} from '../../redux/actions/script'
-import {getScripts} from '../../selectors/'
+import { fetchScripts } from '../../redux/actions/script'
+import { getScripts } from '../../selectors/'
 import { Container, Table } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 
@@ -29,7 +29,12 @@ class Scripts extends React.Component {
 						<i className="fa fa-sliders-h mr-2" />
 						Изменить
 					</NavLink>
-					<NavLink className="ml-2 mr-2" to="">
+					<NavLink
+						className="ml-2 mr-2"
+						to={{
+							pathname: '/viewscript/' + script.id
+						}}
+					>
 						<i className="fas fa-search mr-2" />
 						Предпросмотр
 					</NavLink>
@@ -37,10 +42,10 @@ class Scripts extends React.Component {
 						<i className="mr-2 fas fa-trash" />
 						Удалить
 					</NavLink>
-					<NavLink className="ml-2 mr-2" to="">
+					{/* <NavLink className="ml-2 mr-2" to="">
 						<i className="fas fa-download mr-2" />
 						Скачать
-					</NavLink>
+					</NavLink> */}
 				</td>
 			</tr>
 		)
@@ -51,11 +56,11 @@ class Scripts extends React.Component {
 		return (
 			<div className="Scripts-wrapper">
 				<Container>
-					<Table striped bordered hover>
+					<Table bordered hover >
 						<thead>
 							<tr>
 								<th>#</th>
-								<th className="w-50">Название скрипта</th>
+								<th className="w-60">Название скрипта</th>
 								<th>Действия</th>
 							</tr>
 						</thead>
@@ -70,7 +75,7 @@ class Scripts extends React.Component {
 }
 
 function mapStateToProps(state) {
-	return { 
+	return {
 		scripts: getScripts(state)
 	}
 }

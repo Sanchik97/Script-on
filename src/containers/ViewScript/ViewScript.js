@@ -23,7 +23,12 @@ class ViewScript extends React.Component {
 					{item.answerId === answer.answerId ? (
 						<React.Fragment>
 							<h2 className="h4">
-								<i className="fas fa-headset mr-3 mb-3" />
+								{item.answerId > 0 ? (
+									<i class="fas fa-user-alt mr-3 mb-3" />
+								) : (
+									<i className="fas fa-headset mr-3 mb-3" />
+								)}
+
 								{item.nameOfQuestion}
 							</h2>
 							<p>{item.tips}</p>
