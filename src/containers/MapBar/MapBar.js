@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 
 class MapBar extends React.Component {
 	componentWillUnmount() {
+		this.props.answerId('0')
+		this.props.questionId('0')
 	}
 	renderQuestions() {
 		const { script } = this.props

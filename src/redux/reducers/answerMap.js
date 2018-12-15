@@ -1,7 +1,7 @@
 import { ANSWER_ID } from '../actions/actionTypes'
 
 const initialState={
-    answerId: '1'
+    answerId: '0'
 }
 
 export default (state = initialState, action) =>{

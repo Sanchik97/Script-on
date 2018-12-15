@@ -1,7 +1,7 @@
 import { EDIT_QUESTION_ID } from '../actions/actionTypes'
 
 const initialState = {
-	questionId: '1'
+	questionId: '0'
 }
 
 export default (state = initialState, action) => {

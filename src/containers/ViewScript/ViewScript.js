@@ -47,9 +47,8 @@ class ViewScript extends React.Component {
 							<Link
 								to={{}}
 								onClick={() => {
-									console.log(item.questionId)
-									this.props.answerId(String(Number(item.id)))
-									this.props.questionId(String(Number(item.id)))
+									this.props.answerId(String(item.id))
+									this.props.questionId(String(item.id))
 								}}
 							>
 								{item.nameOfAnswer}
@@ -85,8 +84,8 @@ class ViewScript extends React.Component {
 									to={{}}
 									className="ml-5 mt-3"
 									onClick={() => {
-										this.props.answerId('1')
-										this.props.questionId('1')
+										this.props.answerId('0')
+										this.props.questionId('0')
 									}}
 								>
 									Вернуться к началу разговора
@@ -123,10 +122,3 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(ViewScript)
-
-// $('.clickclick').click(function() {
-// 	var nowId = $(this).attr('data-id')
-
-// 	$('.h5').html('asdd')
-// 	return false
-// })

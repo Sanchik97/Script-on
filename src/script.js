@@ -4,53 +4,53 @@ export default [
 		nameOfScript: 'Холодный обзвон',
 		questions: [
 			{
-				id: '1',
-				answerId: '1',
+				id: '0',
+				answerId: '0',
 				tips: 'Добрый день! Это "Название фирмы"?',
 				nameOfQuestion: 'Начало разговора'
 			},
 			{
-				id: '2',
-				answerId: '2',
+				id: '1',
+				answerId: '1',
 				tips:
 					'*ЛПР - Лицо Принимающее Решение по вашему вопросу. Меня зовут "Ваше имя", компания "Название фирмы". Если имя ЛПР известно (смотрим в базе): Соедените, пожалуйста, с "Имя ЛПР".',
 				nameOfQuestion: 'Да'
 			},
 			{
-				id: '3',
-				answerId: '3',
+				id: '2',
+				answerId: '2',
 				tips: 'Я позвонил по номеру? ...',
 				nameOfQuestion: 'Нет'
 			},
 			{
 				id: '4',
-				answerId: '4',
+				answerId: '3',
 				tips:
 					'Если имя ЛПР еще неизвестно: Добрый день! Меня зовут "Ваше имя", компания "Ваша компания". Я просила секретаря соединить с "должность ЛПР". Мой звонок правильно перевели? (дать ответить) Скажите, пожалуйста, как Вас зовут?(записать). Очень приятно.Неправильно соединили: Переключите, пожалуйста, на "должность ЛПР.Если имя ЛПР известно (смотрим в базе): Добрый день, "Имя ЛПР"! Меня зовут "Ваше имя", компания "Ваша компания".	Вам удобно сейчас разговаривать?Удобно: Мы предлагаем Вам (укажите ваш товар или услугу) самого лучшего качества по выгодным условиям. А также (уажите сопутствующие товары и комплектующие). Мы - (Ваши конкурентные преимущества). "Имя ЛПР", я предлагаю встретиться/созвониться с ведущим специалистом по нашим продуктам. Он очень грамотно и доступно ответит на все ваши вопросы. У него есть яркая презентация и понятные материалы. На встрече вы получите ответы на все ваши вопросы максимально быстро. Это займет немного времени и ни к чему Вас не обязывает. В понедельник в 10 утра Вас устроит? (или называет другое время, записать).',
 				nameOfQuestion: 'Соединяю'
 			},
 			{
 				id: '5',
-				answerId: '5',
+				answerId: '4',
 				tips:
 					'Как я могу к Вам обращаться? (если неизвестно)"Имя ЛПР", мы предлагаем Вам (Ваша продукция) самого лучшего качества по выгодным условиям. А также (сопутствующие товары и комплектующие). Мы - (Ваши конкурентные преимущества). "Имя ЛПР", я предлагаю встретиться/созвониться с ведущим специалистом по нашим продуктам. Он очень грамотно и доступно ответит на все ваши вопросы. У него есть яркая презентация и понятные материалы. На встрече вы получите ответы на все ваши вопросы максимально быстро. Это займет немного времени и ни к чему Вас не обязывает. В понедельник в 10 утра Вас устроит? (или называет другое время, записать)',
 				nameOfQuestion: 'Я слушаю/Со мной'
 			},
 			{
 				id: '6',
-				answerId: '6',
+				answerId: '5',
 				tips: 'Представьтесь и продолжите разговор',
 				nameOfQuestion: 'Я звоню из компании {Название компании}'
 			},
 			{
 				id: '7',
-				answerId: '7',
+				answerId: '6',
 				nameOfQuestion:
 					'Мы предлагаем услуги в сфере {Сфера услуг компании}! Вы заинтересованы?'
 			},
 			{
 				id: '8',
-				answerId: '8',
+				answerId: '7',
 				nameOfQuestion:
 					'Мы звоним вам из компании {Название компании}, когда вам будет удобно с нами поговорить?'
 			}
@@ -58,267 +58,263 @@ export default [
 		answers: [
 			{
 				id: '1',
-				questionId: '1',
+				questionId: '0',
 				nameOfAnswer: 'Да',
 			},
 			{
 				id: '2',
-				questionId: '1',
+				questionId: '0',
 				nameOfAnswer: 'Нет',
 			},
 			{
 				id: '3',
-				questionId: '2',
+				questionId: '1',
 				nameOfAnswer: 'Соединяю',
 			},
 			{
 				id: '4',
-				questionId: '2',
+				questionId: '1',
 				nameOfAnswer: 'Я слушаю/Со мной',
 			},
 			{
 				id: '5',
-				questionId: '2',
-				bubu: '2',
+				questionId: '1',
 				nameOfAnswer: 'С кем именно соеденить?'
 			},
 			{
 				id: '6',
-				questionId: '2',
+				questionId: '1',
 				nameOfAnswer: 'Конкретнее, что хотите/Что предлагаете'
 			},
 			{
 				id: '7',
-				questionId: '2',
+				questionId: '1',
 				nameOfAnswer: 'По какому вопросу'
 			},
 			{
 				id: '8',
-				questionId: '2',
+				questionId: '1',
 				nameOfAnswer: 'Пришлите предложение'
 			},
 			{
 				id: '9',
-				questionId: '2',
+				questionId: '1',
 				nameOfAnswer: 'Нам ничего не нужно'
 			},
 			{
 				id: '10',
-				questionId: '2',
+				questionId: '1',
 				nameOfAnswer: 'Уже купили недавно'
 			},
 			{
 				id: '11',
-				questionId: '2',
+				questionId: '1',
 				nameOfAnswer: 'ЛПР занят/Нет на месте'
 			},
 			{
 				id: '12',
-				questionId: '2',
+				questionId: '1',
 				nameOfAnswer: 'Где вы находитесь?'
 			},
 			{
 				id: '13',
-				questionId: '3',
-				bubu: '3',
+				questionId: '2',
 				nameOfAnswer: 'Номер верный'
 			},
 			{
 				id: '14',
-				questionId: '3',
-				bubu: '3',
+				questionId: '2',
 				nameOfAnswer: 'Неверный номер'
 			},
 			{
 				id: '15',
-				questionId: '4',
-				bubu: '4',
+				questionId: '3',
 				nameOfAnswer: 'Встреча'
 			},
 			{
 				id: '16',
-				questionId: '4',
+				questionId: '3',
 				bubu: '4',
 				nameOfAnswer: 'Ошибочный ЛПР'
 			},
 			{
 				id: '17',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Подробнее/Что вы предлагаете'
 			},
 			{
 				id: '18',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Неудобно разговаривать'
 			},
 			{
 				id: '19',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Нет/нам ничего не надо'
 			},
 			{
 				id: '20',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Уже купили'
 			},
 			{
 				id: '22',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Работаем с другими'
 			},
 			{
 				id: '23',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'У нас нет денег'
 			},
 			{
 				id: '24',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Дорого'
 			},
 			{
 				id: '25',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'ЛПР нет на месте'
 			},
 			{
 				id: '26',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Откуда у вас этот номер'
 			},
 			{
 				id: '27',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Пришлите КП, Факс, email'
 			},
 			{
 				id: '28',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Сами перезвоним'
 			},
 			{
 				id: '29',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Сейчас неактуально'
 			},
 			{
 				id: '30',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Тендер'
 			},
 			{
 				id: '31',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Нет времени/Отказ'
 			},
 			{
 				id: '32',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Универсальный ответ'
 			},
 			{
 				id: '33',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Ваши приемущества/Чем вы лучше других'
 			},
 			{
 				id: '34',
-				questionId: '4',
+				questionId: '3',
 				nameOfAnswer: 'Где вы находитесь?'
 			},
 			{
 				id: '35',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Встреча'
 			},
 			{
 				id: '36',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Ошибочный ЛПР'
 			},
 			{
 				id: '37',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Подробнее/Что вы предлагаете'
 			},
 			{
 				id: '38',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Неудобно разговаривать'
 			},
 			{
 				id: '39',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Нет/ Нам ничего не надо'
 			},
 			{
 				id: '40',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Уже купили'
 			},
 			{
 				id: '41',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Работаем с другими'
 			},
 			{
 				id: '42',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'У нас нет денег'
 			},
 			{
 				id: '43',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Дорого'
 			},
 			{
 				id: '44',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'ЛПР нет на месте'
 			},
 			{
 				id: '45',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Откуда у Вас этот номер'
 			},
 			{
 				id: '46',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Пришлите КП, факс, e’mail'
 			},
 			{
 				id: '47',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Сами перезвоним'
 			},
 			{
 				id: '48',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Сейчас неактуально'
 			},
 			{
 				id: '49',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Тендер'
 			},
 			{
 				id: '50',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Нет времени/Отказ'
 			},
 			{
 				id: '51',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Универсальный ответ'
 			},
 			{
 				id: '52',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Ваши преимущества/Чем вы лучше других'
 			},
 			{
 				id: '53',
-				questionId: '5',
+				questionId: '4',
 				nameOfAnswer: 'Где вы находитесь'
 			}
 		]
