@@ -84,7 +84,7 @@ class ViewScript extends React.Component {
 					<Col xs="8">
 						{script && this.renderScript()}
 						<div>
-							{quest.questionId > 1 ? (
+							{quest.questionId > 2 ? (
 								<Link
 									to={{}}
 									className="ml-5 mt-3"
