@@ -10,3 +10,8 @@ export const EDIT_QUESTION_ID = 'EDIT_QUESTION_ID'
 export const INCREMENT_QUESTION_ID = 'INCREMENT_QUESTION_ID'
 
 export const ANSWER_ID = 'ANSWER_ID'
+
+export const LOGIN = 'LOGIN'
+
+
+export const ADD_NEW_SCRIPT_NAME = 'ADD_NEW_SCRIPT_NAME'

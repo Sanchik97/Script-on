@@ -15,7 +15,7 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
-export default class Navigate extends React.Component {
+class Navigate extends React.Component {
 	state = {
 		isOpen: false
 	}
@@ -48,7 +48,7 @@ export default class Navigate extends React.Component {
 
 						<Nav className="ml-auto" navbar>
 							<NavItem>
-								<NavLink tag={Link} to="/components/">
+								<NavLink tag={Link} to="/admin">
 									<i className="mr-2 fas fa-user-cog" />
 									Панель администратора
 								</NavLink>
@@ -60,3 +60,6 @@ export default class Navigate extends React.Component {
 		)
 	}
 }
+
+
+export default Navigate

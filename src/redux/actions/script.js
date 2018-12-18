@@ -6,7 +6,9 @@ import {
 	FETCH_SCRIPT_BY_ID_FAILURE,
 	FETCH_SCRIPT_BY_ID_SUCCESS,
 	EDIT_QUESTION_ID,
-	ANSWER_ID
+	ANSWER_ID,
+	LOGIN,
+	ADD_NEW_SCRIPT_NAME,
 } from './actionTypes'
 
 import { fetchScriptsApi, fetchScriptByIdApi } from '../../api/'
@@ -57,5 +59,18 @@ export const answerId = id => dispatch => {
 	dispatch({
 		type: ANSWER_ID,
 		payload: id
+	})
+}
+
+export const loginHandler = () => dispatch => {
+	dispatch({
+		type: LOGIN
+	})
+}
+
+export const addNewScriptHandler = (event) => dispatch =>{
+	dispatch({
+		type: ADD_NEW_SCRIPT_NAME,
+		payload: event
 	})
 }
