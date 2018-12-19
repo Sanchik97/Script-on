@@ -1,26 +1,26 @@
-import scriptData from '../script'
 import request from 'superagent'
 import * as R from 'ramda'
 
+//Данные с сервера в формате json
+
+const scripts = request.get('https://demo8799291.mockable.io')
+
 export const fetchScriptsApi = async () => {
-
-    //Данные с сервера в формате json
-
 	try {
-		const { body } = await request.get(
-			'http://www.mocky.io/v2/5c18924d2f00006b00af0ff5'
-		)
+		const { body } = await scripts
 		return body.scripts
 	} catch (error) {
 		console.log(error)
-    }
-    
+	}
 }
 
+// Находим скрипт и выбираем по ID
 export const fetchScriptByIdApi = async id => {
-	return new Promise((resolve, reject) => {
-		const script = R.find(R.propEq('id', id), scriptData)
-		resolve(script)
-	})
+	try {
+		const { body } = await scripts
+		const script = R.find(R.propEq('id', id), body.scripts)
+		return script
+	} catch (error) {
+		console.log(error)
+	}
 }
-
