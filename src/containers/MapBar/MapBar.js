@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { getScriptById } from '../../selectors/'
 import { answerId, questionId } from '../../redux/actions/script'
 import { Link } from 'react-router-dom'
+import './MapBar.scss'
 
 class MapBar extends React.Component {
 	componentWillUnmount() {
 		this.props.answerId('0')
 		this.props.questionId('0')
 	}
-	
+
 	renderQuestions() {
 		const { script } = this.props
 		const renderQuestions = script.questions.map(item => {
@@ -35,7 +36,7 @@ class MapBar extends React.Component {
 		const { script } = this.props
 
 		return (
-			<div className="card">
+			<div className="card mapbar">
 				<h2 className="h4 mt-4 mb-3 text-center">Карта разговора</h2>
 				<hr />
 				{script && this.renderQuestions()}

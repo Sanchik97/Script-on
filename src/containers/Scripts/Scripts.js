@@ -38,10 +38,7 @@ class Scripts extends React.Component {
 						<i className="fas fa-search mr-2" />
 						Предпросмотр
 					</NavLink>
-					<NavLink
-						className="ml-2 mr-2"
-						to={{}}
-					>
+					<NavLink className="ml-2 mr-2" to={{}}>
 						<i className="mr-2 fas fa-trash" />
 						Удалить
 					</NavLink>
@@ -79,7 +76,8 @@ class Scripts extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		scripts: getScripts(state)
+		scripts: getScripts(state),
+		login: state.login
 	}
 }
 function mapDispatchToProps(dispatch) {

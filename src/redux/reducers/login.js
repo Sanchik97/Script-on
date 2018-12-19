@@ -1,9 +1,9 @@
 import { LOGIN } from '../actions/actionTypes'
 
 const initialState = {
-	username: 'Admin',
-	password: 'Admin_12345',
-	login: true
+	username: 'admin',
+	password: '12345',
+	login: false
 }
 
 export default (state = initialState, action) => {

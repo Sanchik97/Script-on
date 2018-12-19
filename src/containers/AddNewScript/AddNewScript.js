@@ -17,7 +17,7 @@ class AddNewScript extends React.Component {
 	}
 
 	AddNewScriptHandler = () => {
-		const { scripts, nameOfNewScript, fetchScripts } = this.props
+		const { scripts, nameOfNewScript } = this.props
 
 		scripts.push({
 			id: String(Number(scripts.length + 1)),
@@ -25,12 +25,9 @@ class AddNewScript extends React.Component {
 			questions: [],
 			answers: []
 		})
-
-		return fetchScripts()
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<div>
 				<Modal

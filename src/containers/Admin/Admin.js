@@ -10,7 +10,6 @@ import {
 } from 'reactstrap'
 import { connect } from 'react-redux'
 import { loginHandler } from '../../redux/actions/script'
-import { Link } from 'react-router-dom'
 import AddNewScript from '../AddNewScript/AddNewScript'
 
 class Admin extends React.Component {
@@ -23,6 +22,7 @@ class Admin extends React.Component {
 			modal: false
 		})
 	}
+
 	componentWillUnmount() {
 		setTimeout(() => {
 			this.props.loginHandler()
@@ -31,8 +31,8 @@ class Admin extends React.Component {
 
 	loginHandler(event) {
 		event.preventDefault()
-		const usernameValue = document.getElementById('username').value
-		const passwordValue = document.getElementById('password').value
+		let usernameValue = document.getElementById('username').value
+		let passwordValue = document.getElementById('password').value
 		let error = document.getElementById('error')
 
 		const { username, password } = this.props.login

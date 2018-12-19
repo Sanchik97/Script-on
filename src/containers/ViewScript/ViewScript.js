@@ -10,6 +10,8 @@ import {
 import { Link } from 'react-router-dom'
 import MapBar from '../MapBar/MapBar'
 
+import './viewScript.scss'
+
 class ViewScript extends React.Component {
 	componentDidMount() {
 		this.props.fetchScriptById(this.props.match.params.id)
@@ -31,7 +33,10 @@ class ViewScript extends React.Component {
 
 								{item.nameOfQuestion}
 							</h2>
-							<p><i className="fas fa-headset mr-2"></i>{item.tips}</p>
+							<p>
+								<i className="fas fa-headset mr-2" />
+								{item.tips}
+							</p>
 							<ul>{this.renderAnswers()}</ul>
 						</React.Fragment>
 					) : null}
@@ -49,15 +54,15 @@ class ViewScript extends React.Component {
 				<React.Fragment key={item.id}>
 					{item.questionId === quest.questionId ? (
 						<li className="mt-1 mb-1">
-							<Link
-								to={{}}
+							<p
+								className="link text-primary"
 								onClick={() => {
 									this.props.answerId(String(item.id))
 									this.props.questionId(String(item.id))
 								}}
 							>
 								{item.nameOfAnswer}
-							</Link>
+							</p>
 						</li>
 					) : null}
 				</React.Fragment>
@@ -83,11 +88,10 @@ class ViewScript extends React.Component {
 				<Row>
 					<Col xs="8">
 						{script && this.renderScript()}
-						<div>
+						<div className="mb-5 ml-5 mt-3 ">
 							{quest.questionId > 2 ? (
 								<Link
 									to={{}}
-									className="ml-5 mt-3"
 									onClick={() => {
 										this.props.answerId('0')
 										this.props.questionId('0')

@@ -8,7 +8,7 @@ import {
 	EDIT_QUESTION_ID,
 	ANSWER_ID,
 	LOGIN,
-	ADD_NEW_SCRIPT_NAME,
+	ADD_NEW_SCRIPT_NAME
 } from './actionTypes'
 
 import { fetchScriptsApi, fetchScriptByIdApi } from '../../api/'
@@ -68,7 +68,7 @@ export const loginHandler = () => dispatch => {
 	})
 }
 
-export const addNewScriptHandler = (event) => dispatch =>{
+export const addNewScriptHandler = event => dispatch => {
 	dispatch({
 		type: ADD_NEW_SCRIPT_NAME,
 		payload: event
