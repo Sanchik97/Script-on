@@ -2,13 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './containers/App/App'
-import { BrowserRouter } from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import {createBrowserHistory} from 'history'
 import rootReducers from './redux/reducers/rootReducers'
+
+const history = createBrowserHistory()
 
 const store = createStore(
 	rootReducers,
@@ -16,11 +19,11 @@ const store = createStore(
 )
 
 const application = (
-	<BrowserRouter>
+	<Router history={history}>
 		<Provider store={store}>
 			<App />
 		</Provider>
-	</BrowserRouter>
+	</Router>
 )
 
 ReactDOM.render(application, document.getElementById('root'))

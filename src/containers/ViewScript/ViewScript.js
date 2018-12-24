@@ -24,18 +24,17 @@ class ViewScript extends React.Component {
 				<React.Fragment key={item.id}>
 					{item.answerId === answer.answerId ? (
 						<React.Fragment>
-							<h2 className="h4">
+							<h2 className="mb-4 h4">
 								{item.answerId > 0 ? (
-									<i className="fas fa-user-alt mr-3 mb-3" />
+									<i className="fas fa-user-tie mr-3 mb-3" />
 								) : (
 									<i className="fas fa-comments mr-3 mb-3" />
 								)}
-
-								{item.nameOfQuestion}
+								{item.answerName ? item.answerName : "Начало разговора"}
 							</h2>
 							<p>
-								<i className="fas fa-headset mr-2" />
-								{item.tips}
+								<i className="fas fa-headset mr-2" style={{fontSize: `1.5rem`}}/>
+								{item.nameOfQuestion}
 							</p>
 							<ul>{this.renderAnswers()}</ul>
 						</React.Fragment>

@@ -1,14 +1,14 @@
-import { ADD_NEW_SCRIPT_NAME } from '../actions/actionTypes'
+import { EDITOR_VALUE } from '../actions/actionTypes'
 
 const initialState = {
-	newScriptName: ''
+	editorState:''
 }
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case ADD_NEW_SCRIPT_NAME:
+		case EDITOR_VALUE:
 			return {
-				newScriptName: action.payload
+				editorValue: action.payload
 			}
 		default:
 			return state

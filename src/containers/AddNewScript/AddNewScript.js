@@ -1,27 +1,23 @@
 import React from 'react'
-import {
-	Input,
-	Button,
-	Modal,
-	ModalHeader,
-	ModalBody,
-	ModalFooter
-} from 'reactstrap'
 import { connect } from 'react-redux'
 import { getScripts } from '../../selectors/'
-import { fetchScripts, addNewScriptHandler } from '../../redux/actions/script'
+import { fetchScripts, newScriptName } from '../../redux/actions/script'
+import { Container, Form, Input, Button } from 'reactstrap'
+import QuestionInput from '../../ui/QuestionInput/QuestionInput'
+import './addNewScript.scss'
 
 class AddNewScript extends React.Component {
 	componentDidMount() {
 		this.props.fetchScripts()
 	}
 
-	AddNewScriptHandler = () => {
-		const { scripts, nameOfNewScript } = this.props
+	AddNewScriptHandler = event => {
+		event.preventDefault()
+		const { scripts, addNewScript } = this.props
 
 		scripts.push({
 			id: String(Number(scripts.length + 1)),
-			nameOfScript: nameOfNewScript.newScriptName,
+			nameOfScript: addNewScript.newScriptName,
 			questions: [],
 			answers: []
 		})
@@ -29,49 +25,39 @@ class AddNewScript extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<Modal
-					isOpen={this.props.modal}
-					toggle={this.toggle}
-					className={this.props.className}
-				>
-					<ModalHeader toggle={this.toggle}>
-						Введите название скрипта
-					</ModalHeader>
-					<ModalBody>
-						<Input
-							type="text"
-							placeholder="Название скрипта"
-							defaultValue=""
-							onChange={event =>
-								this.props.addNewScriptHandler(event.target.value)
-							}
-						/>
-					</ModalBody>
-					<ModalFooter>
-						<Button color="primary" onClick={() => this.AddNewScriptHandler()}>
-							Добавить скрипт
-						</Button>
-						<Button color="secondary" onClick={this.props.modalToggle}>
-							Отмена
-						</Button>
-					</ModalFooter>
-				</Modal>
-			</div>
+			<Container>
+				<h1 className="h3">Добавить новый скрипт</h1>
+				<Form className="AddNewScript__form">
+					<Input
+						className=" mt-3 mb-3"
+						placeholder="Введите название скрипта"
+						defaultValue={this.props.addNewScript.newScriptName}
+						onChange={event => this.props.newScriptName(event.target.value)}
+					/>
+					<hr />
+
+					<div className="AddNewScript__wrapper">
+						<div className="mt-2 mb-4">
+							<QuestionInput />
+						</div>
+					</div>
+					<Button color="primary">Добавить</Button>
+				</Form>
+			</Container>
 		)
 	}
 }
 function mapStateToProps(state) {
 	return {
 		scripts: getScripts(state),
-		nameOfNewScript: state.addNewScriptName
+		addNewScript: state.addNewScript
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
 		fetchScripts: () => dispatch(fetchScripts()),
-		addNewScriptHandler: event => dispatch(addNewScriptHandler(event))
+		newScriptName: event => dispatch(newScriptName(event))
 	}
 }
 

@@ -10,48 +10,33 @@ import {
 } from 'reactstrap'
 import { connect } from 'react-redux'
 import { loginHandler } from '../../redux/actions/script'
-import AddNewScript from '../AddNewScript/AddNewScript'
+import Scripts from '../Scripts/Scripts'
+import { Link } from 'react-router-dom'
 
 class Admin extends React.Component {
-	state = {
-		modal: false
-	}
-
-	modalToggle = () => {
-		this.setState({
-			modal: false
-		})
-	}
-
-	componentWillUnmount() {
+	timeoutFunction = () => {
 		setTimeout(() => {
 			this.props.loginHandler()
-		}, 72000)
+		}, 100000)
 	}
 
-	loginHandler(event) {
+	componentWillUnmount = () => {
+		this.timeoutFunction()
+	}
+
+	handleLoginSubmit = event => {
 		event.preventDefault()
-		let usernameValue = document.getElementById('username').value
-		let passwordValue = document.getElementById('password').value
-		let error = document.getElementById('error')
-
 		const { username, password } = this.props.login
-
-		if (usernameValue === username && passwordValue === password) {
-			this.props.loginHandler()
-		} else {
-			error.innerHTML = 'Ошибка! Логин или пароль неверные'
-		}
 	}
 
 	renderLogin() {
-		console.log(this.props.login)
+		const { username, password } = this.props.login
 		return (
 			<React.Fragment>
 				<Row>
 					<Col md="3" className="m-auto d-flex">
 						<Form
-							onSubmit={event => this.loginHandler(event)}
+							onSubmit={event => this.handleLoginSubmit(event)}
 							className="text-center align-self-center"
 						>
 							<img
@@ -68,14 +53,14 @@ class Admin extends React.Component {
 									type="text"
 									placeholder="Введите логин"
 									className="mb-2"
-									id="username"
+									defaultValue={username}
 								/>
 							</InputGroup>
 							<InputGroup>
 								<Input
 									type="password"
 									placeholder="Введите пароль"
-									id="password"
+									defaultValue={password}
 								/>
 							</InputGroup>
 							<p className="text-danger mt-2" id="error" />
@@ -95,10 +80,12 @@ class Admin extends React.Component {
 	renderAdmin() {
 		return (
 			<React.Fragment>
-				<Button onClick={() => this.setState({ modal: true })}>
-					Добавить новый скрипт
-				</Button>
-				<AddNewScript modalToggle={this.modalToggle} modal={this.state.modal} />
+				<Scripts />
+				<div className="mt-5 mb-5 ml-5">
+					<Button className="btn-success" tag={Link} to="/admin/addnewscript">
+						Добавить новый скрипт
+					</Button>
+				</div>
 			</React.Fragment>
 		)
 	}

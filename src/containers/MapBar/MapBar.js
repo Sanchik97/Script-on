@@ -13,7 +13,7 @@ class MapBar extends React.Component {
 
 	renderQuestions() {
 		const { script } = this.props
-		const renderQuestions = script.questions.map(item => {
+		const renderQuestions = script.answers.map(item => {
 			return (
 				<li key={item.id} className="mt-1 mb-1">
 					<Link
@@ -24,7 +24,7 @@ class MapBar extends React.Component {
 							this.props.questionId(item.id)
 						}}
 					>
-						{item.nameOfQuestion}
+						{item.nameOfAnswer}
 					</Link>
 				</li>
 			)

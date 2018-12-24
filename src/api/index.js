@@ -1,10 +1,9 @@
 import request from 'superagent'
 import * as R from 'ramda'
 
-//Данные с сервера в формате json
-
 const scripts = request.get('https://demo8799291.mockable.io')
 
+//Данные с сервера в формате json
 export const fetchScriptsApi = async () => {
 	try {
 		const { body } = await scripts
@@ -14,7 +13,7 @@ export const fetchScriptsApi = async () => {
 	}
 }
 
-// Находим скрипт и выбираем по ID
+// Находим скрипт и выбираем его по ID
 export const fetchScriptByIdApi = async id => {
 	try {
 		const { body } = await scripts

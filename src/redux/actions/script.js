@@ -8,7 +8,11 @@ import {
 	EDIT_QUESTION_ID,
 	ANSWER_ID,
 	LOGIN,
-	ADD_NEW_SCRIPT_NAME
+	ADD_NEW_SCRIPT_NAME,
+	ADD_NEW_SCRIPT_ID,
+	ADD_NEW_SCRIPT_QUESTION,
+	ADD_NEW_SCRIPT_ANSWER,
+	EDITOR_VALUE
 } from './actionTypes'
 
 import { fetchScriptsApi, fetchScriptByIdApi } from '../../api/'
@@ -68,9 +72,37 @@ export const loginHandler = () => dispatch => {
 	})
 }
 
-export const addNewScriptHandler = event => dispatch => {
+export const editorValueHandler = event => dispatch => {
+	dispatch({
+		type: EDITOR_VALUE,
+		payload: event
+	})
+}
+
+// Рефакторинг
+
+export const newScriptName = event => dispatch => {
 	dispatch({
 		type: ADD_NEW_SCRIPT_NAME,
 		payload: event
+	})
+}
+
+export const newScriptId = id => dispatch => {
+	dispatch({
+		type: ADD_NEW_SCRIPT_ID,
+		payload: id
+	})
+}
+
+export const newScriptQuestion = () => dispatch => {
+	dispatch({
+		type: ADD_NEW_SCRIPT_QUESTION
+	})
+}
+
+export const newScriptAnswer = () => dispatch => {
+	dispatch({
+		type: ADD_NEW_SCRIPT_ANSWER
 	})
 }
