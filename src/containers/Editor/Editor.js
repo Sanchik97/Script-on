@@ -1,22 +1,16 @@
 import React from 'react'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
-import { Editor as TextEditor } from 'react-draft-wysiwyg'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+
+// import { Editor as TextEditor } from 'react-draft-wysiwyg'
+
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+
 import './Editor.scss'
-import { connect } from 'react-redux'
-import { editorValueHandler } from '../../redux/actions/script'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+
 
 class Editor extends React.Component {
-	state = {
-		editorState: ''
-	}
-
-	editorHandler = editorState => {
-		this.setState({
-			editorState
-		})
-	}
-
 	render() {
 		return (
 			<React.Fragment>
@@ -29,20 +23,14 @@ class Editor extends React.Component {
 						Реплика оператора
 					</ModalHeader>
 					<ModalBody>
-						<TextEditor
-							editorState={this.state.editorState}
-							toolbarClassName="toolbarClassName"
-							wrapperClassName="wrapperClassName"
-							editorClassName="editorClassName"
-							onEditorStateChange={this.editorHandler}
+						<ReactQuill
+							value={this.props.nameOfAnswer}
+							onChange={this.props.nameOfAnswerHandler}
 						/>
 					</ModalBody>
 					<ModalFooter>
 						<Button color="primary" onClick={this.props.toggle}>
-							Сохранить
-						</Button>
-						<Button color="secondary" onClick={this.props.toggle}>
-							Отменить
+							Закрыть
 						</Button>
 					</ModalFooter>
 				</Modal>
@@ -51,19 +39,4 @@ class Editor extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		editorValue: state.editorValue
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		editorValueHandler: event => dispatch(editorValueHandler(event))
-	}
-}
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Editor)
+export default Editor

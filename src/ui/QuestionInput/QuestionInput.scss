@@ -1,7 +1,7 @@
 .questioninput {
 	background-color: #eeeeee !important;
 	padding-left: 45px !important;
-	text-align:left;
+	overflow: hidden;
 	&:focus {
 		background-color: #fff !important;
 	}
@@ -25,3 +25,5 @@
 		padding-left: 35px;
 	}
 }
+
+

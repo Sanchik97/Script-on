@@ -23,45 +23,53 @@ export class AnswerInput extends React.Component {
 
 	render() {
 		return (
-			<React.Fragment>
-				<div
-					className="answerinput__block mt-2 mb-2"
-					style={
-						this.state.expand ? { height: `40px`, overflow: `hidden` } : null
-					}
-				>
-					{this.state.expand ? (
-						<i
-							className="fas fa-angle-up answerinput__arrow"
-							onClick={this.expandToggle}
-						/>
-					) : (
-						<i
-							className="fas fa-angle-down answerinput__arrow"
-							onClick={this.expandToggle}
-						/>
-					)}
-
-					<i className="fa fa-user-tie answerinput__icon" />
-					<Input
-						className="answerinput"
-						placeholder="Введите вопрос"
-						defaultValue="Ответ клиента"
+			<div
+				className="answerinput__block mt-2 mb-2"
+				style={
+					this.state.expand ? { height: `40px`, overflow: `hidden` } : null
+				}
+			>
+				{this.state.expand ? (
+					<i
+						className="fas fa-angle-up answerinput__arrow"
+						onClick={this.expandToggle}
 					/>
-					{this.state.addQuestionInput ? <QuestionInput /> : null}
+				) : (
+					<i
+						className="fas fa-angle-down answerinput__arrow"
+						onClick={this.expandToggle}
+					/>
+				)}
 
-					<div className="mt-3 mb-3 ml-5">
-						<p className="link  text-secondary">
-							{this.state.addQuestionInput ? null : (
-								<i
-									className="fas fa-plus"
-									onClick={() => this.addQuestionInputHandler()}
-								/>
-							)}
-						</p>
-					</div>
+				<i className="fa fa-user-tie answerinput__icon" />
+				<div className="d-flex align-items-center">
+					<Input
+						data-id={this.props.index}
+						className="answerinput"
+						placeholder="Ответ клиента"
+						defaultValue=""
+					/>
+					<i
+						className="far fa-trash-alt link ml-2 mr-2 text-secondary"
+						onClick={index => {
+							this.props.removeAnswerHandler(index)
+						}}
+					/>
+					<i className="far link ml-2 mr-2 fa-copy text-secondary" />
 				</div>
-			</React.Fragment>
+				{this.state.addQuestionInput ? <QuestionInput /> : null}
+
+				<div className="mt-3 mb-3 ml-5">
+					<p className="text-secondary">
+						{this.state.addQuestionInput ? null : (
+							<i
+								className="fas fa-plus link "
+								onClick={() => this.addQuestionInputHandler()}
+							/>
+						)}
+					</p>
+				</div>
+			</div>
 		)
 	}
 }

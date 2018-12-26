@@ -33,17 +33,6 @@ class Navigate extends React.Component {
 									Скрипты
 								</NavLink>
 							</NavItem>
-							<UncontrolledDropdown nav inNavbar>
-								<DropdownToggle nav caret>
-									Опции
-								</DropdownToggle>
-								<DropdownMenu right>
-									<DropdownItem>Option 1</DropdownItem>
-									<DropdownItem>Option 2</DropdownItem>
-									<DropdownItem divider />
-									<DropdownItem>Reset</DropdownItem>
-								</DropdownMenu>
-							</UncontrolledDropdown>
 						</Nav>
 
 						<Nav className="ml-auto" navbar>
@@ -60,6 +49,5 @@ class Navigate extends React.Component {
 		)
 	}
 }
-
 
 export default Navigate

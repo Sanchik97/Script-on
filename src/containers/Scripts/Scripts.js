@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchScripts } from '../../redux/actions/script'
 import { getScripts } from '../../selectors/'
 import { Container, Table } from 'reactstrap'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Scripts extends React.Component {
 	componentDidMount() {
@@ -16,20 +16,20 @@ class Scripts extends React.Component {
 			<tr key={script.id}>
 				<td>{index + 1}</td>
 				<td>
-					<NavLink
+					<Link
 						to={{
 							pathname: '/viewscript/' + script.id
 						}}
 					>
 						{script.nameOfScript}
-					</NavLink>
+					</Link>
 				</td>
 				<td>
-					<NavLink className="ml-2 mr-2" to="">
+					<Link className="ml-2 mr-2" to="">
 						<i className="fa fa-sliders-h mr-2" />
 						Изменить
-					</NavLink>
-					<NavLink
+					</Link>
+					<Link
 						className="ml-2 mr-2"
 						to={{
 							pathname: '/viewscript/' + script.id
@@ -37,15 +37,11 @@ class Scripts extends React.Component {
 					>
 						<i className="fas fa-search mr-2" />
 						Предпросмотр
-					</NavLink>
-					<NavLink className="ml-2 mr-2" to={{}}>
+					</Link>
+					<Link className="ml-2 mr-2" to={{}}>
 						<i className="mr-2 fas fa-trash" />
 						Удалить
-					</NavLink>
-					{/* <NavLink className="ml-2 mr-2" to="">
-						<i className="fas fa-download mr-2" />
-						Скачать
-					</NavLink> */}
+					</Link>
 				</td>
 			</tr>
 		)

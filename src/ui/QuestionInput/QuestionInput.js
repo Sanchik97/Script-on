@@ -1,14 +1,13 @@
 import React from 'react'
-import { Input } from 'reactstrap'
 import { AnswerInput } from '../AnswerInput/AnswerInput'
 import './QuestionInput.scss'
 import Editor from '../../containers/Editor/Editor'
 
-
-export default class QuestionInput extends React.Component {
+class QuestionInput extends React.Component {
 	state = {
 		expand: false,
-		count: 0,
+		answers: [],
+		nameOfAnswer: `Реплика оператора`,
 		editor: false
 	}
 
@@ -18,16 +17,28 @@ export default class QuestionInput extends React.Component {
 		})
 	}
 
-	addAnswerInputHandler = () => {
+	nameOfAnswerHandler = html => {
 		this.setState({
-			count: this.state.count + 1
+			nameOfAnswer: html
 		})
-		console.log(this.state.count)
 	}
 
 	expandToggle = () => {
 		this.setState({
 			expand: !this.state.expand
+		})
+	}
+
+	removeAnswerHandler = index => {
+		this.state.answers.splice(index, 1)
+		this.setState({
+			answers: this.state.answers
+		})
+	}
+
+	addAnswerInputHandler = () => {
+		this.setState({
+			answers: [...this.state.answers, <AnswerInput />]
 		})
 	}
 
@@ -53,15 +64,16 @@ export default class QuestionInput extends React.Component {
 					)}
 
 					<i className="fa fa-headset questioninput__icon" />
-					<Input
-						type="button"
-						className="questioninput"
-						placeholder="Введите вопрос"
-						defaultValue="Реплика оператора"
+					<div
+						className="questioninput form-control"
 						onClick={() => this.editorToggle()}
+						dangerouslySetInnerHTML={{ __html: this.state.nameOfAnswer }}
 					/>
-					{[...Array(this.state.count)].map(item => (
-						<AnswerInput key={item} />
+					{this.state.answers.map((item, index) => (
+						<AnswerInput
+							key={index}
+							removeAnswerHandler={index => this.removeAnswerHandler(index)}
+						/>
 					))}
 					<div className="mt-3 mb-3 ml-2">
 						<p className="link  text-secondary">
@@ -73,8 +85,15 @@ export default class QuestionInput extends React.Component {
 					</div>
 				</div>
 
-				<Editor editor={this.state.editor} toggle={this.editorToggle} />
+				<Editor
+					editor={this.state.editor}
+					nameOfAnswer={this.state.nameOfAnswer}
+					nameOfAnswerHandler={this.nameOfAnswerHandler}
+					toggle={this.editorToggle}
+				/>
 			</React.Fragment>
 		)
 	}
 }
+
+export default QuestionInput

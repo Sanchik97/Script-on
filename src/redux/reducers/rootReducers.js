@@ -6,7 +6,6 @@ import questionMap from './questionMap'
 import answerMap from './answerMap'
 import login from './login'
 import addNewScript from './addNewScript'
-import editorValue from './editorValue'
 
 export default combineReducers({
 	scripts,
@@ -16,5 +15,4 @@ export default combineReducers({
 	answerMap,
 	login,
 	addNewScript,
-	editorValue
 })

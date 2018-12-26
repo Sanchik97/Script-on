@@ -12,7 +12,6 @@ import {
 	ADD_NEW_SCRIPT_ID,
 	ADD_NEW_SCRIPT_QUESTION,
 	ADD_NEW_SCRIPT_ANSWER,
-	EDITOR_VALUE
 } from './actionTypes'
 
 import { fetchScriptsApi, fetchScriptByIdApi } from '../../api/'
@@ -72,12 +71,6 @@ export const loginHandler = () => dispatch => {
 	})
 }
 
-export const editorValueHandler = event => dispatch => {
-	dispatch({
-		type: EDITOR_VALUE,
-		payload: event
-	})
-}
 
 // Рефакторинг
 
