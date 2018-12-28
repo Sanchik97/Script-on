@@ -14,5 +14,5 @@ export default combineReducers({
 	questionMap,
 	answerMap,
 	login,
-	addNewScript,
+	addNewScript
 })

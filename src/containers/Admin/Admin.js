@@ -4,8 +4,6 @@ import Scripts from '../Scripts/Scripts'
 import { Link } from 'react-router-dom'
 
 class Admin extends React.Component {
-
-
 	render() {
 		return (
 			<Container>

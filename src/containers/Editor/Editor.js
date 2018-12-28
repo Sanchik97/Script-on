@@ -1,14 +1,10 @@
 import React from 'react'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
-
-// import { Editor as TextEditor } from 'react-draft-wysiwyg'
-
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
 import './Editor.scss'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-
 
 class Editor extends React.Component {
 	render() {
@@ -29,7 +25,7 @@ class Editor extends React.Component {
 						/>
 					</ModalBody>
 					<ModalFooter>
-						<Button color="primary" onClick={this.props.toggle}>
+						<Button color="secondary" onClick={this.props.toggle}>
 							Закрыть
 						</Button>
 					</ModalFooter>

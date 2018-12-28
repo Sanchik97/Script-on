@@ -12,29 +12,40 @@ import { connect } from 'react-redux'
 import { loginHandler } from '../../redux/actions/script'
 
 class Login extends React.Component {
-	timeoutFunction = () => {
-		setTimeout(() => {
-			this.props.loginHandler()
-		}, 100000)
+	state = {
+		username: '',
+		password: '',
+		error: ''
 	}
 
-	componentWillUnmount = () => {
-		this.timeoutFunction()
-	}
-	componentDidUpdate() {
-		this.timeoutFunction()
+	inputChangeHandler = event => {
+		event.persist()
+
+		const { name, value } = event.target
+
+		this.setState({
+			[name]: value
+		})
 	}
 
-	handleLoginSubmit = event => {}
+	handleLoginSubmit = () => {
+		const { username, password } = this.props.login
+		if (username === this.state.username && password === this.state.password) {
+			return this.props.loginHandler()
+		} else {
+			this.setState({
+				error: 'Ошибка! Логин или пароль неверны'
+			})
+		}
+	}
 
 	render() {
+		const { username, password } = this.state
 		return (
 			<Container>
 				<Row>
 					<Col md="3" className="m-auto d-flex">
-						<Form
-							className="text-center align-self-center"
-						>
+						<Form className="text-center align-self-center">
 							<img
 								src="http://bootstrap-4.ru/assets/brand/bootstrap-solid.svg"
 								alt="Logo"
@@ -47,23 +58,25 @@ class Login extends React.Component {
 							<InputGroup>
 								<Input
 									type="text"
+									name="username"
 									placeholder="Введите логин"
 									className="mb-2"
-									name="login"
-									defaultValue=""
+									defaultValue={username.value}
+									onChange={this.inputChangeHandler}
 								/>
 							</InputGroup>
 							<InputGroup>
 								<Input
 									type="password"
-									placeholder="Введите пароль"
 									name="password"
-									defaultValue=""
+									placeholder="Введите пароль"
+									defaultValue={password.value}
+									onChange={this.inputChangeHandler}
 								/>
 							</InputGroup>
-							<p className="text-danger mt-2" id="error" />
+							<p className="text-danger mt-2">{this.state.error}</p>
 							<Button
-								onClick={() => this.props.loginHandler()}
+								onClick={this.handleLoginSubmit}
 								className="mt-4 btn btn-lg btn-primary btn-block"
 								color="primary"
 							>

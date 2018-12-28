@@ -31,9 +31,10 @@ class AddNewScript extends React.Component {
 					<Input
 						className=" mt-3 mb-3"
 						placeholder="Введите название скрипта"
-						defaultValue={this.props.addNewScript.newScriptName}
+						defaultValue=""
 						onChange={event => this.props.newScriptName(event.target.value)}
 					/>
+
 					<hr />
 
 					<div className="AddNewScript__wrapper">

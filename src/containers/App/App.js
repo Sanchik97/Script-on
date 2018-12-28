@@ -21,7 +21,7 @@ class App extends Component {
 					{login.login ? (
 						<Route path="/admin" exact component={Admin} />
 					) : (
-						<Route path="/admin" exact component={Login} />
+						<Route path="/admin" component={Login} />
 					)}
 					<Route path="/admin/addnewscript" component={AddNewScript} />
 					<Route path="*" component={Page404} />

@@ -30,9 +30,8 @@ class QuestionInput extends React.Component {
 	}
 
 	removeAnswerHandler = index => {
-		this.state.answers.splice(index, 1)
-		this.setState({
-			answers: this.state.answers
+		this.setState(prevState => {
+			return { answers: prevState.answers.filter((el, i) => i !== index) }
 		})
 	}
 
@@ -43,6 +42,7 @@ class QuestionInput extends React.Component {
 	}
 
 	render() {
+		console.log(this.props)
 		return (
 			<React.Fragment>
 				<div
@@ -64,22 +64,30 @@ class QuestionInput extends React.Component {
 					)}
 
 					<i className="fa fa-headset questioninput__icon" />
+
 					<div
+						data-id={{}}
 						className="questioninput form-control"
 						onClick={() => this.editorToggle()}
 						dangerouslySetInnerHTML={{ __html: this.state.nameOfAnswer }}
 					/>
-					{this.state.answers.map((item, index) => (
-						<AnswerInput
-							key={index}
-							removeAnswerHandler={index => this.removeAnswerHandler(index)}
-						/>
-					))}
+
+					{this.state.answers.map((item, index) => {
+						return (
+							<AnswerInput
+								key={index}
+								removeAnswerHandler={() => this.removeAnswerHandler(index)}
+							/>
+						)
+					})}
+
 					<div className="mt-3 mb-3 ml-2">
-						<p className="link  text-secondary">
+						<p className="link text-secondary">
 							<i
 								className="fas fa-plus"
-								onClick={() => this.addAnswerInputHandler()}
+								onClick={() => {
+									this.addAnswerInputHandler()
+								}}
 							/>
 						</p>
 					</div>

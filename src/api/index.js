@@ -23,3 +23,5 @@ export const fetchScriptByIdApi = async id => {
 		console.log(error)
 	}
 }
+
+
