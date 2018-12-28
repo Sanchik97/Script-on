@@ -2,16 +2,19 @@ import React from 'react'
 import { Input } from 'reactstrap'
 import './AnswerInput.scss'
 import QuestionInput from '../QuestionInput/QuestionInput'
-import { useUID } from 'react-uid'
-
 
 export class AnswerInput extends React.Component {
 	state = {
 		expand: true,
 		answerValue: '',
-		answerId: useUID()
+		answerId:
+			Math.random()
+				.toString(36)
+				.substring(2, 15) +
+			Math.random()
+				.toString(36)
+				.substring(2, 15)
 	}
-	
 
 	answerValueHandler = event => {
 		this.setState({
@@ -26,7 +29,6 @@ export class AnswerInput extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.answerId)
 		return (
 			<div
 				className="answerinput__block mt-2 mb-2"

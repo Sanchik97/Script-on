@@ -8,7 +8,14 @@ class QuestionInput extends React.Component {
 		expand: false,
 		answers: [],
 		nameOfAnswer: `Реплика оператора`,
-		editor: false
+		editor: false,
+		questionId:
+			Math.random()
+				.toString(36)
+				.substring(2, 15) +
+			Math.random()
+				.toString(36)
+				.substring(2, 15)
 	}
 
 	editorToggle = () => {
@@ -42,10 +49,10 @@ class QuestionInput extends React.Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<React.Fragment>
 				<div
+					data-id={this.state.questionId}
 					className="questioninput__block mt-2 mb-2"
 					style={
 						this.state.expand ? { height: `40px`, overflow: `hidden` } : null
