@@ -2,23 +2,19 @@ import React from 'react'
 import { Input } from 'reactstrap'
 import './AnswerInput.scss'
 import QuestionInput from '../QuestionInput/QuestionInput'
+import { randomId } from '../../selectors'
 
 export class AnswerInput extends React.Component {
 	state = {
 		expand: true,
-		answerValue: '',
-		answerId:
-			Math.random()
-				.toString(36)
-				.substring(2, 15) +
-			Math.random()
-				.toString(36)
-				.substring(2, 15)
+		nameOfAnswer: '',
+		answerId: randomId(),
+		questionId: this.props.questionId
 	}
 
-	answerValueHandler = event => {
+	nameOfAnswerHandler = event => {
 		this.setState({
-			answerValue: event.target.value
+			nameOfAnswer: event.target.value
 		})
 	}
 
@@ -29,14 +25,13 @@ export class AnswerInput extends React.Component {
 	}
 
 	render() {
+		const { expand, nameOfAnswer, answerId, questionId } = this.state
 		return (
 			<div
 				className="answerinput__block mt-2 mb-2"
-				style={
-					this.state.expand ? { height: `40px`, overflow: `hidden` } : null
-				}
+				style={expand ? { height: `40px`, overflow: `hidden` } : null}
 			>
-				{this.state.expand ? (
+				{expand ? (
 					<i
 						className="fas fa-angle-down answerinput__arrow"
 						onClick={this.expandToggle}
@@ -51,11 +46,12 @@ export class AnswerInput extends React.Component {
 				<i className="fa fa-user-tie answerinput__icon" />
 				<div className="d-flex align-items-center">
 					<Input
-						data-id={this.state.answerId}
+						data-id={answerId}
+						data-question-id={questionId}
 						className="answerinput"
 						placeholder="Ответ клиента"
-						defaultValue={this.state.answerValue}
-						onChange={this.answerValueHandler}
+						defaultValue={nameOfAnswer}
+						onChange={this.nameOfAnswerHandler}
 					/>
 					<i
 						className="far fa-trash-alt link ml-2 mr-2 text-secondary"
@@ -63,7 +59,11 @@ export class AnswerInput extends React.Component {
 					/>
 					<i className="far link ml-2 mr-2 fa-copy text-secondary" />
 				</div>
-				<QuestionInput />
+				<QuestionInput
+					answerId={answerId}
+					nameOfAnswer={nameOfAnswer}
+					anwers={(answerId, nameOfAnswer, questionId)}
+				/>
 			</div>
 		)
 	}

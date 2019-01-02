@@ -20,8 +20,8 @@ class Editor extends React.Component {
 					</ModalHeader>
 					<ModalBody>
 						<ReactQuill
-							value={this.props.nameOfAnswer}
-							onChange={this.props.nameOfAnswerHandler}
+							value={this.props.nameOfQuestion}
+							onChange={this.props.nameOfQuestionHandler}
 						/>
 					</ModalBody>
 					<ModalFooter>

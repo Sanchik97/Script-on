@@ -2,20 +2,17 @@ import React from 'react'
 import { AnswerInput } from '../AnswerInput/AnswerInput'
 import './QuestionInput.scss'
 import Editor from '../../containers/Editor/Editor'
+import { randomId } from '../../selectors/'
 
 class QuestionInput extends React.Component {
 	state = {
 		expand: false,
 		answers: [],
-		nameOfAnswer: `Реплика оператора`,
+		answerId: this.props.answerId,
+		answerName: this.props.nameOfAnswer,
+		nameOfQuestion: `Реплика оператора`,
 		editor: false,
-		questionId:
-			Math.random()
-				.toString(36)
-				.substring(2, 15) +
-			Math.random()
-				.toString(36)
-				.substring(2, 15)
+		questionId: randomId()
 	}
 
 	editorToggle = () => {
@@ -24,9 +21,9 @@ class QuestionInput extends React.Component {
 		})
 	}
 
-	nameOfAnswerHandler = html => {
+	nameOfQuestionHandler = html => {
 		this.setState({
-			nameOfAnswer: html
+			nameOfQuestion: html
 		})
 	}
 
@@ -49,16 +46,21 @@ class QuestionInput extends React.Component {
 	}
 
 	render() {
+		const {
+			questionId,
+			nameOfQuestion,
+			answerId,
+			answerName,
+			expand,
+			editor
+		} = this.state
 		return (
 			<React.Fragment>
 				<div
-					data-id={this.state.questionId}
 					className="questioninput__block mt-2 mb-2"
-					style={
-						this.state.expand ? { height: `40px`, overflow: `hidden` } : null
-					}
+					style={expand ? { height: `40px`, overflow: `hidden` } : null}
 				>
-					{this.state.expand ? (
+					{expand ? (
 						<i
 							className="fas fa-angle-down questioninput__arrow"
 							onClick={this.expandToggle}
@@ -73,16 +75,19 @@ class QuestionInput extends React.Component {
 					<i className="fa fa-headset questioninput__icon" />
 
 					<div
-						data-id={{}}
+						data-id={questionId}
+						data-answer-name={answerName}
+						data-answer-id={answerId}
+						defaultValue={nameOfQuestion}
 						className="questioninput form-control"
 						onClick={() => this.editorToggle()}
-						dangerouslySetInnerHTML={{ __html: this.state.nameOfAnswer }}
+						dangerouslySetInnerHTML={{ __html: this.state.nameOfQuestion }}
 					/>
-
 					{this.state.answers.map((item, index) => {
 						return (
 							<AnswerInput
 								key={index}
+								questionId={questionId}
 								removeAnswerHandler={() => this.removeAnswerHandler(index)}
 							/>
 						)
@@ -90,20 +95,15 @@ class QuestionInput extends React.Component {
 
 					<div className="mt-3 mb-3 ml-2">
 						<p className="link text-secondary">
-							<i
-								className="fas fa-plus"
-								onClick={() => {
-									this.addAnswerInputHandler()
-								}}
-							/>
+							<i className="fas fa-plus" onClick={this.addAnswerInputHandler} />
 						</p>
 					</div>
 				</div>
 
 				<Editor
-					editor={this.state.editor}
-					nameOfAnswer={this.state.nameOfAnswer}
-					nameOfAnswerHandler={this.nameOfAnswerHandler}
+					editor={editor}
+					nameOfQuestion={nameOfQuestion}
+					nameOfQuestionHandler={this.nameOfQuestionHandler}
 					toggle={this.editorToggle}
 				/>
 			</React.Fragment>

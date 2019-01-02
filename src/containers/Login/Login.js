@@ -40,7 +40,7 @@ class Login extends React.Component {
 	}
 
 	render() {
-		const { username, password } = this.state
+		const { username, password, error } = this.state
 		return (
 			<Container>
 				<Row>
@@ -74,7 +74,7 @@ class Login extends React.Component {
 									onChange={this.inputChangeHandler}
 								/>
 							</InputGroup>
-							<p className="text-danger mt-2">{this.state.error}</p>
+							<p className="text-danger mt-2">{error}</p>
 							<Button
 								onClick={this.handleLoginSubmit}
 								className="mt-4 btn btn-lg btn-primary btn-block"

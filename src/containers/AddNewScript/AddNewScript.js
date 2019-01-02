@@ -1,68 +1,70 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { getScripts } from '../../selectors/'
-import { fetchScripts, newScriptName } from '../../redux/actions/script'
 import { Container, Form, Input, Button } from 'reactstrap'
 import QuestionInput from '../../ui/QuestionInput/QuestionInput'
 import './addNewScript.scss'
+import { randomId } from '../../selectors'
 
 class AddNewScript extends React.Component {
-	componentDidMount() {
-		this.props.fetchScripts()
+	state = {
+		id: randomId(),
+		nameOfScript: '',
+		questions: [],
+		answers: []
+	}
+
+	questionsArray = (
+		questionId,
+		nameOfQuestion,
+		answerId,
+		answerName,
+		answers
+	) => {
+		this.setState({
+			questions: [{ questionId, nameOfQuestion, answerId, answerName }],
+			answers: answers
+		})
+	}
+
+	nameOfScriptHandler = event => {
+		this.setState = {
+			nameOfScript: event.target.value
+		}
 	}
 
 	AddNewScriptHandler = event => {
 		event.preventDefault()
-		const { scripts, addNewScript } = this.props
-
-		scripts.push({
-			id: String(Number(scripts.length + 1)),
-			nameOfScript: addNewScript.newScriptName,
-			questions: [],
-			answers: []
-		})
 	}
 
 	render() {
+		const {nameOfScript} = this.state
 		return (
 			<Container>
 				<h1 className="h3">Добавить новый скрипт</h1>
 				<Form className="AddNewScript__form">
 					<Input
-						className=" mt-3 mb-3"
+						className=" m	t-3 mb-3"
 						placeholder="Введите название скрипта"
-						defaultValue=""
-						onChange={event => this.props.newScriptName(event.target.value)}
+						defaultValue={nameOfScript}
+						onChange={this.nameOfScriptHandler}
 					/>
 
 					<hr />
 
 					<div className="AddNewScript__wrapper">
 						<div className="mt-2 mb-4">
-							<QuestionInput />
+							<QuestionInput
+								answersArray={this.answersArray}
+								questionsArray={this.questionsArray}
+							/>
 						</div>
 					</div>
-					<Button color="primary">Добавить</Button>
+					<Button color="success" onClick={this.AddNewScriptHandler}>
+						Добавить
+					</Button>
 				</Form>
 			</Container>
 		)
 	}
 }
-function mapStateToProps(state) {
-	return {
-		scripts: getScripts(state),
-		addNewScript: state.addNewScript
-	}
-}
 
-function mapDispatchToProps(dispatch) {
-	return {
-		fetchScripts: () => dispatch(fetchScripts()),
-		newScriptName: event => dispatch(newScriptName(event))
-	}
-}
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(AddNewScript)
+export default AddNewScript

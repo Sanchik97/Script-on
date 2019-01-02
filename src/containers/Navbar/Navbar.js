@@ -16,12 +16,13 @@ class Navigate extends React.Component {
 		isOpen: false
 	}
 	render() {
+		const { isOpen } = this.state
 		return (
 			<Navbar className="mb-4" color="light" light expand="md">
 				<Container>
 					<NavbarBrand className="mr-5">reactstrap</NavbarBrand>
 					<NavbarToggler onClick={this.toggle} />
-					<Collapse isOpen={this.state.isOpen} navbar>
+					<Collapse isOpen={isOpen} navbar>
 						<Nav navbar>
 							<NavItem>
 								<NavLink tag={Link} to="/">
