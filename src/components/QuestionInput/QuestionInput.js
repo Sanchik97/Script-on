@@ -1,18 +1,26 @@
 import React from 'react'
 import { AnswerInput } from '../AnswerInput/AnswerInput'
 import './QuestionInput.scss'
-import Editor from '../../containers/Editor/Editor'
+import Editor from '../Editor/Editor'
 import { randomId } from '../../selectors/'
+import { connect } from 'react-redux'
+import { questionHandler } from '../../redux/actions/script'
 
 class QuestionInput extends React.Component {
 	state = {
 		expand: false,
 		answers: [],
 		answerId: this.props.answerId,
-		answerName: this.props.nameOfAnswer,
+		nameOfAnswer: this.props.nameOfAnswer,
 		nameOfQuestion: `Реплика оператора`,
 		editor: false,
 		questionId: randomId()
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			nameOfAnswer: nextProps.nameOfAnswer
+		})
 	}
 
 	editorToggle = () => {
@@ -45,12 +53,21 @@ class QuestionInput extends React.Component {
 		})
 	}
 
+	componentDidMount() {
+		this.props.questionHandler(
+			this.state.questionId,
+			this.state.nameOfQuestion,
+			this.state.answerId,
+			this.state.nameOfAnswer
+		)
+	}
+
 	render() {
 		const {
 			questionId,
 			nameOfQuestion,
 			answerId,
-			answerName,
+			nameOfAnswer,
 			expand,
 			editor
 		} = this.state
@@ -76,7 +93,7 @@ class QuestionInput extends React.Component {
 
 					<div
 						data-id={questionId}
-						data-answer-name={answerName}
+						data-answer-name={nameOfAnswer}
 						data-answer-id={answerId}
 						defaultValue={nameOfQuestion}
 						className="questioninput form-control"
@@ -111,4 +128,16 @@ class QuestionInput extends React.Component {
 	}
 }
 
-export default QuestionInput
+function mapDispatchToProps(dispatch) {
+	return {
+		questionHandler: (questionId, nameOfQuestion, answerId, nameOfAnswer) =>
+			dispatch(
+				questionHandler(questionId, nameOfQuestion, answerId, nameOfAnswer)
+			)
+	}
+}
+
+export default connect(
+	null,
+	mapDispatchToProps
+)(QuestionInput)

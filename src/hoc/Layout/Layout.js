@@ -1,5 +1,5 @@
 import React from 'react'
-import Navigate from '../../containers/Navbar/Navbar'
+import Navigate from '../../components/Navbar/Navbar'
 
 
 export default class Layout extends React.Component{

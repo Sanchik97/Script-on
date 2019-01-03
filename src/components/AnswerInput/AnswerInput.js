@@ -7,7 +7,7 @@ import { randomId } from '../../selectors'
 export class AnswerInput extends React.Component {
 	state = {
 		expand: true,
-		nameOfAnswer: '',
+		nameOfAnswer: 'Ответ клиента',
 		answerId: randomId(),
 		questionId: this.props.questionId
 	}

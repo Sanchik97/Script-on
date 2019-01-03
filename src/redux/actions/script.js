@@ -7,7 +7,8 @@ import {
 	FETCH_SCRIPT_BY_ID_SUCCESS,
 	EDIT_QUESTION_ID,
 	ANSWER_ID,
-	LOGIN
+	LOGIN,
+	ADD_NEW_QUESTION
 } from './actionTypes'
 
 import { fetchScriptsApi, fetchScriptByIdApi } from '../../api/'
@@ -64,5 +65,20 @@ export const answerId = id => dispatch => {
 export const loginHandler = () => dispatch => {
 	dispatch({
 		type: LOGIN
+	})
+}
+
+export const questionHandler = (
+	questionId,
+	nameOfQuestion,
+	answerId,
+	answerName
+) => dispatch => {
+	dispatch({
+		type: ADD_NEW_QUESTION,
+		questionId: questionId,
+		nameOfQuestion: nameOfQuestion,
+		answerId: answerId,
+		answerName: answerName
 	})
 }

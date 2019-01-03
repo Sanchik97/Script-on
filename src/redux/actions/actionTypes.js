@@ -12,3 +12,7 @@ export const INCREMENT_QUESTION_ID = 'INCREMENT_QUESTION_ID'
 export const ANSWER_ID = 'ANSWER_ID'
 
 export const LOGIN = 'LOGIN'
+
+
+export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION'
+export const EDIT_QUESTION_NAME = 'EDIT_QUESTION_NAME'
