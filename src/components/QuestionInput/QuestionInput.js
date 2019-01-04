@@ -1,10 +1,10 @@
 import React from 'react'
-import { AnswerInput } from '../AnswerInput/AnswerInput'
+import AnswerInput from '../AnswerInput/AnswerInput'
 import './QuestionInput.scss'
 import Editor from '../Editor/Editor'
 import { randomId } from '../../selectors/'
 import { connect } from 'react-redux'
-import { questionHandler } from '../../redux/actions/script'
+import { addNewAnswerHandler } from '../../redux/actions/script'
 
 class QuestionInput extends React.Component {
 	state = {
@@ -51,15 +51,6 @@ class QuestionInput extends React.Component {
 		this.setState({
 			answers: [...this.state.answers, <AnswerInput />]
 		})
-	}
-
-	componentDidMount() {
-		this.props.questionHandler(
-			this.state.questionId,
-			this.state.nameOfQuestion,
-			this.state.answerId,
-			this.state.nameOfAnswer
-		)
 	}
 
 	render() {
@@ -112,7 +103,17 @@ class QuestionInput extends React.Component {
 
 					<div className="mt-3 mb-3 ml-2">
 						<p className="link text-secondary">
-							<i className="fas fa-plus" onClick={this.addAnswerInputHandler} />
+							<i
+								className="fas fa-plus"
+								onClick={() => {
+									this.addAnswerInputHandler()
+									this.props.addNewAnswerHandler(
+											this.state.answerId,
+											this.state.nameOfAnswer,
+											this.state.questionId
+										)
+								}}
+							/>
 						</p>
 					</div>
 				</div>
@@ -130,10 +131,8 @@ class QuestionInput extends React.Component {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		questionHandler: (questionId, nameOfQuestion, answerId, nameOfAnswer) =>
-			dispatch(
-				questionHandler(questionId, nameOfQuestion, answerId, nameOfAnswer)
-			)
+		addNewAnswerHandler: (id, nameOfAnswer, questionId) =>
+			dispatch(addNewAnswerHandler(id, nameOfAnswer, questionId))
 	}
 }
 

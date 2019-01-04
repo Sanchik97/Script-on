@@ -3,8 +3,10 @@ import { Input } from 'reactstrap'
 import './AnswerInput.scss'
 import QuestionInput from '../QuestionInput/QuestionInput'
 import { randomId } from '../../selectors'
+import { connect } from 'react-redux'
+import { addNewAnswerHandler } from '../../redux/actions/script'
 
-export class AnswerInput extends React.Component {
+class AnswerInput extends React.Component {
 	state = {
 		expand: true,
 		nameOfAnswer: 'Ответ клиента',
@@ -68,3 +70,15 @@ export class AnswerInput extends React.Component {
 		)
 	}
 }
+
+function mapDispatchToProps(dispatch) {
+	return {
+		addNewAnswerHandler: (id, nameOfAnswer, questionId) =>
+			dispatch(addNewAnswerHandler(id, nameOfAnswer, questionId))
+	}
+}
+
+export default connect(
+	null,
+	mapDispatchToProps
+)(AnswerInput)

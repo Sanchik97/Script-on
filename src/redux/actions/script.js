@@ -8,7 +8,7 @@ import {
 	EDIT_QUESTION_ID,
 	ANSWER_ID,
 	LOGIN,
-	ADD_NEW_QUESTION
+	ADD_NEW_ANSWER
 } from './actionTypes'
 
 import { fetchScriptsApi, fetchScriptByIdApi } from '../../api/'
@@ -68,17 +68,13 @@ export const loginHandler = () => dispatch => {
 	})
 }
 
-export const questionHandler = (
-	questionId,
-	nameOfQuestion,
-	answerId,
-	answerName
+export const addNewAnswerHandler = (
+	id,
+	nameOfAnswer,
+	questionId
 ) => dispatch => {
 	dispatch({
-		type: ADD_NEW_QUESTION,
-		questionId: questionId,
-		nameOfQuestion: nameOfQuestion,
-		answerId: answerId,
-		answerName: answerName
+		type: ADD_NEW_ANSWER,
+		payload: { id: id, nameOfAnswer: nameOfAnswer, questionId: questionId }
 	})
 }
