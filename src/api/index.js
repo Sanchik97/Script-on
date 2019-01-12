@@ -23,12 +23,3 @@ export const fetchScriptByIdApi = async id => {
 		console.log(error)
 	}
 }
-
-export const addNewScript = (
-	id,
-	nameOfScript,
-	questions = [],
-	answers = []
-) => {
-	console.log(id, nameOfScript, questions, answers)
-}

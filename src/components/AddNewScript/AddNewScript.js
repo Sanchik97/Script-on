@@ -8,15 +8,7 @@ class AddNewScript extends React.Component {
 	state = {
 		id: randomId(),
 		nameOfScript: '',
-		questions: [],
-		answers: []
-	}
-
-	questionsArray = (questionId, nameOfQuestion, answerId, nameOfAnswers) => {
-		this.setState({
-			questions: [{ questionId, nameOfQuestion, answerId, nameOfAnswers }]
-		})
-		console.log(this.state.questions)
+		quetion: []
 	}
 
 	nameOfScriptHandler = event => {
@@ -47,8 +39,7 @@ class AddNewScript extends React.Component {
 					<div className="AddNewScript__wrapper">
 						<div className="mt-2 mb-4">
 							<QuestionInput
-								answersArray={this.answersArray}
-								questionsArray={this.questionsArray}
+								questionInputHandler={this.questionInputHandler}
 							/>
 						</div>
 					</div>

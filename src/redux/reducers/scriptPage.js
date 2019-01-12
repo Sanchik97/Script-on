@@ -11,8 +11,7 @@ export default (state = initialState, action) =>{
         case FETCH_SCRIPT_BY_ID_SUCCESS:
         return R.merge(state, {
             id: R.prop('id', action.payload)
-        })
-        
+        })    
         default:
         return state    
     }

@@ -13,4 +13,5 @@ export const ANSWER_ID = 'ANSWER_ID'
 
 export const LOGIN = 'LOGIN'
 
-export const ADD_NEW_ANSWER = 'ADD_NEW_ANSWER'
+
+export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION'

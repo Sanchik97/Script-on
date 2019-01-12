@@ -3,8 +3,6 @@ import AnswerInput from '../AnswerInput/AnswerInput'
 import './QuestionInput.scss'
 import Editor from '../Editor/Editor'
 import { randomId } from '../../selectors/'
-import { connect } from 'react-redux'
-import { addNewAnswerHandler } from '../../redux/actions/script'
 
 class QuestionInput extends React.Component {
 	state = {
@@ -83,9 +81,6 @@ class QuestionInput extends React.Component {
 					<i className="fa fa-headset questioninput__icon" />
 
 					<div
-						data-id={questionId}
-						data-answer-name={nameOfAnswer}
-						data-answer-id={answerId}
 						defaultValue={nameOfQuestion}
 						className="questioninput form-control"
 						onClick={() => this.editorToggle()}
@@ -107,11 +102,6 @@ class QuestionInput extends React.Component {
 								className="fas fa-plus"
 								onClick={() => {
 									this.addAnswerInputHandler()
-									this.props.addNewAnswerHandler(
-											this.state.answerId,
-											this.state.nameOfAnswer,
-											this.state.questionId
-										)
 								}}
 							/>
 						</p>
@@ -129,14 +119,4 @@ class QuestionInput extends React.Component {
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		addNewAnswerHandler: (id, nameOfAnswer, questionId) =>
-			dispatch(addNewAnswerHandler(id, nameOfAnswer, questionId))
-	}
-}
-
-export default connect(
-	null,
-	mapDispatchToProps
-)(QuestionInput)
+export default QuestionInput

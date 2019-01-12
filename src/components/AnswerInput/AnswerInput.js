@@ -3,8 +3,6 @@ import { Input } from 'reactstrap'
 import './AnswerInput.scss'
 import QuestionInput from '../QuestionInput/QuestionInput'
 import { randomId } from '../../selectors'
-import { connect } from 'react-redux'
-import { addNewAnswerHandler } from '../../redux/actions/script'
 
 class AnswerInput extends React.Component {
 	state = {
@@ -48,11 +46,9 @@ class AnswerInput extends React.Component {
 				<i className="fa fa-user-tie answerinput__icon" />
 				<div className="d-flex align-items-center">
 					<Input
-						data-id={answerId}
-						data-question-id={questionId}
 						className="answerinput"
 						placeholder="Ответ клиента"
-						defaultValue={nameOfAnswer}
+						defaultValue={this.state.nameOfAnswer}
 						onChange={this.nameOfAnswerHandler}
 					/>
 					<i
@@ -71,14 +67,4 @@ class AnswerInput extends React.Component {
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		addNewAnswerHandler: (id, nameOfAnswer, questionId) =>
-			dispatch(addNewAnswerHandler(id, nameOfAnswer, questionId))
-	}
-}
-
-export default connect(
-	null,
-	mapDispatchToProps
-)(AnswerInput)
+export default AnswerInput
